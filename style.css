@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
+
 :root {
   --body-color: 48 48 58;
-  
   --font-color: 255 255 255;
   --highlight-color: 0 0 0;
-
-  
 }
 
+/* Body*/
 body {
   background: linear-gradient(to top, #1a1a1a, #636363);
   margin: 0px;
@@ -97,7 +96,6 @@ button, a, input {
   font-weight: bold;
 }
 
-
 #header-container {
   width: 100%;
   position: relative;
@@ -112,8 +110,7 @@ button, a, input {
   border-bottom-right-radius: 0.2rem;
 }
 
-
-
+/*Contenedor de b*/
 #search-container {
   display: flex;
   gap: 0.2rem;
@@ -166,6 +163,7 @@ button, a, input {
   padding-left: 1rem;
 }
 
+/*Contenedor de motores de b*/
 #apps-container {
   display: grid;
   gap: 0.2rem;
@@ -307,8 +305,7 @@ button, a, input {
   border-bottom-right-radius: 0.5rem; 
 }
 
-
-
+/*Media querys para pantallas menores a 1300px*/
 @media(max-width: 1300px) {
   body {
     overflow: auto;  
@@ -335,6 +332,7 @@ button, a, input {
   }
 }
 
+/*Redes sociales*/
 .social-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -463,7 +461,7 @@ button, a, input {
   background: #c12127;
 }
 
-/* animated logo effect */
+/* Efecto de animación del logo */
 
 :root {
   --atom-size: 180px;
@@ -482,7 +480,7 @@ button, a, input {
 *, *:before, *::after { box-sizing: border-box; }
 
 
-/* Atom */
+/* Atomo */
 .atom {
   position: relative;
   width: var(--atom-size);
@@ -501,7 +499,7 @@ button, a, input {
   100% {  transform: rotate(-360deg) scale(1); }
 }
 
-/* Nucleus */
+/* Nubleo */
 
 @keyframes nucleus {
   0% { transform: scale(1); }
@@ -511,7 +509,7 @@ button, a, input {
   100% { transform: scale(1); }
 }
 
-/* Electron Orbit */
+/* Orbita de los electrones */
 .atom > [class^="electron"] {
   border-top: solid rgba(var(--atom-color-rgb), 15) 30px;
   border-right: solid rgba(var(--atom-color-rgb), .35) 2px;
@@ -566,7 +564,7 @@ button, a, input {
   }
 }
 
-/* Electron Unit */
+/* Electr */
 .atom [class^="electron"]::after {
   content: '';
   display: block;
@@ -622,7 +620,7 @@ button, a, input {
   }
 }
 
-/* Shadow */
+/* Sombra */
 main { position: relative; }
 main::after {
   content: '';
