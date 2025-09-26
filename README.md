@@ -1,5 +1,7 @@
 # Página de inicio personalizada
 
+<img width="1916" height="902" alt="buscador-interfaz" src="https://github.com/user-attachments/assets/92f81d19-f5a3-46ac-8eee-ffaece3e05f1" />
+
 Una página de inicio personalizada y funcional diseñada para ser tu punto de partida en la web. Incluye herramientas de búsqueda, historial, notas rápidas, reloj en tiempo real y un calendario interactivo con notas por día.
 
 ## Características
@@ -56,11 +58,17 @@ Pagina-inicio/
 - El historial se guarda automáticamente y se muestra como etiquetas debajo del campo de búsqueda.
 
 ### Notas rápidas
+
+<img width="932" height="324" alt="notas-rapidas" src="https://github.com/user-attachments/assets/1c3c8059-b3d8-42f2-9b9b-8109c5da7978" />
+
 - Agrega notas en el campo de texto y haz clic en "Agregar Nota".
 - Las notas se muestran en una lista con opción de eliminar individualmente.
 - Limita a 10 notas; las más antiguas se eliminan automáticamente.
 
 ### Calendario
+
+<img width="741" height="799" alt="notas-calendario" src="https://github.com/user-attachments/assets/a16c13cd-ca80-415f-9e39-e176047985c0" />
+
 - Haz clic en la fecha para abrir el modal del calendario.
 - Navega entre meses con los botones de flecha.
 - Haz clic en un día para ver/agregar notas específicas.

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
 #editable-text {
   font-family: 'Pacifico', cursive;
   font-size: 2rem;
@@ -367,7 +369,6 @@
   background: #0088a9;
   transform: scale(1.08);
 }
-@import url('https://fonts.googleapis.com/css?family=Pacifico');
 :root {
   --body-color: 48 48 58;
   
