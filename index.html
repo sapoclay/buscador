@@ -33,17 +33,16 @@
   <!-- Modal del Calendario -->
   <div id="calendar-modal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="toggleCalendarModal()">&times;</span>
       <div id="calendar-header">
-        <button id="prev-month">&lt;</button>
+        <button type="button" id="prev-month">‹</button>
         <h3 id="current-month-year"></h3>
-        <button id="next-month">&gt;</button>
+        <button type="button" id="next-month">›</button>
       </div>
       <div id="calendar-grid"></div>
       <div id="day-notes" style="display: none;">
         <h4>Notas para <span id="selected-date"></span></h4>
         <textarea id="note-text" placeholder="Escribe tus notas aquí..."></textarea>
-        <button id="save-note">Guardar nota</button>
+        <button type="button" id="save-note">Guardar nota</button>
         <div id="saved-notes"></div>
       </div>
     </div>

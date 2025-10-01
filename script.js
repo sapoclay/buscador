@@ -474,15 +474,24 @@ function deleteNote(dateKey, index) {
 }
 
 // Navegación de meses
-document.getElementById('prev-month').onclick = () => {
-  currentDate.setMonth(currentDate.getMonth() - 1);
-  renderCalendar();
-};
+const prevMonthBtn = document.getElementById('prev-month');
+const nextMonthBtn = document.getElementById('next-month');
 
-document.getElementById('next-month').onclick = () => {
-  currentDate.setMonth(currentDate.getMonth() + 1);
-  renderCalendar();
-};
+if (prevMonthBtn) {
+  prevMonthBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar();
+  });
+}
+
+if (nextMonthBtn) {
+  nextMonthBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar();
+  });
+}
 
 // Cerrar modal al hacer clic fuera
 window.onclick = function(event) {
