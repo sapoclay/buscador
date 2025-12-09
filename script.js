@@ -23,11 +23,10 @@ const searchIcon = document.getElementById('search-icon');
 const searchInput = document.getElementById('search');
 
 // Se envía el formulario al pulsar Intro
-
 searchInput.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
-    submitForm();
+    googleSearch();
   }
 });
 
@@ -110,141 +109,48 @@ if (clearHistoryBtn) {
 
 renderSearchHistory();
 
-function submitForm() {
-  const query = searchInput.value;
-  const searchEngine = searchInput.dataset.searchEngine;
-  window.open(`${searchEngine}${query}`, '_blank');
-  addToSearchHistory(query);
-}
+// Motores de búsqueda - Configuración
+const searchEngines = {
+  link0: { icon: 'google.png', placeholder: 'Buscar en Google', url: 'https://www.google.com/search?q=' },
+  link1: { icon: 'stackoverflow.png', placeholder: 'Buscar en Stack Overflow', url: 'https://stackoverflow.com/questions/tagged/' },
+  link2: { icon: 'github.png', placeholder: 'Buscar en Github', url: 'https://github.com/search?q=' },
+  link3: { icon: 'codepen.png', placeholder: 'Buscar en CodePen', url: 'https://codepen.io/search/pens?q=' },
+  link4: { icon: 'youtube.png', placeholder: 'Buscar en Youtube', url: 'https://www.youtube.com/results?search_query=' },
+  link5: { icon: 'spotify.png', placeholder: 'Buscar en Spotify', url: 'https://open.spotify.com/search/' },
+  link6: { icon: 'linkedin.png', placeholder: 'Buscar en Linkedin', url: 'https://www.linkedin.com/search/results/all/?keywords=' },
+  link7: { icon: 'facebook.png', placeholder: 'Buscar en Facebook', url: 'https://www.facebook.com/search/top/?q=' },
+  link8: { icon: 'instagram.png', placeholder: 'Buscar en Instagram', url: 'https://www.instagram.com/' },
+  link9: { icon: 'wikipedia.png', placeholder: 'Buscar en Wikipedia', url: 'https://es.wikipedia.org/w/index.php?go=Ir&search=' },
+  link10: { icon: 'unsplash.png', placeholder: 'Buscar en Unsplash', url: 'https://unsplash.com/es/s/fotos/' },
+  link11: { icon: 'bing.png', placeholder: 'Buscar en Bing', url: 'https://www.bing.com/search?q=' },
+  link12: { icon: 'duckduckgo.png', placeholder: 'Buscar en DuckDuckgo', url: 'https://duckduckgo.com/?q=' },
+  link13: { icon: 'x.png', placeholder: 'Buscar en X', url: 'https://X.com/search?q=' },
+  link14: { icon: 'amazon.png', placeholder: 'Buscar en Amazon', url: 'https://www.amazon.es/s?k=' },
+  link15: { icon: 'primevideo.png', placeholder: 'Buscar en Amazon Prime Vídeo', url: 'https://www.primevideo.com/region/eu/search/ref=atv_nb_sug?ie=UTF8&phrase=' },
+  link16: { icon: 'reddit.png', placeholder: 'Buscar en Reddit', url: 'https://www.reddit.com/search/?q=' }
+};
 
-// Motores de búsqueda
-
-const link0 = document.getElementById('link0');
-const link1 = document.getElementById('link1');
-const link2 = document.getElementById('link2');
-const link3 = document.getElementById('link3');
-const link4 = document.getElementById('link4');
-const link5 = document.getElementById('link5');
-const link6 = document.getElementById('link6');
-const link7 = document.getElementById('link7');
-const link8 = document.getElementById('link8');
-const link9 = document.getElementById('link9');
-const link10 = document.getElementById('link10');
-const link11 = document.getElementById('link11');
-const link12 = document.getElementById('link12');
-const link13 = document.getElementById('link13');
-const link14 = document.getElementById('link14');
-const link15 = document.getElementById('link15');
-const link16 = document.getElementById('link16');
-
-link0.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/google.png';
-  searchInput.placeholder = 'Buscar en Google';
-  searchInput.dataset.searchEngine = 'https://www.google.com/search?q=';
+// Asignar eventos a todos los motores de búsqueda
+Object.keys(searchEngines).forEach(linkId => {
+  const element = document.getElementById(linkId);
+  if (element) {
+    element.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const config = searchEngines[linkId];
+      document.getElementById('search-icon').src = './Img/logos/' + config.icon;
+      document.getElementById('search').placeholder = config.placeholder;
+      document.getElementById('search').dataset.searchEngine = config.url;
+    });
+  }
 });
 
-link1.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/stackoverflow.png';
-  searchInput.placeholder = 'Buscar en Stack Overflow';
-  searchInput.dataset.searchEngine = 'https://stackoverflow.com/questions/tagged/';
-});
-
-link2.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/github.png';
-  searchInput.placeholder = 'Buscar en Github';
-  searchInput.dataset.searchEngine = 'https://github.com/search?q=';
-});
-
-link3.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/codepen.png';
-  searchInput.placeholder = 'Buscar en CodePen';
-  searchInput.dataset.searchEngine = 'https://codepen.io/search/pens?q=';
-});
-
-link4.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/youtube.png';
-  searchInput.placeholder = 'Buscar en Youtube';
-  searchInput.dataset.searchEngine = 'https://www.youtube.com/results?search_query=';
-});
-
-link5.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/spotify.png';
-  searchInput.placeholder = 'Buscar en Spotify';
-  searchInput.dataset.searchEngine = 'https://open.spotify.com/search/';
-});
-
-link6.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/linkedin.png';
-  searchInput.placeholder = 'Buscar en Linkedin';
-  searchInput.dataset.searchEngine = 'https://www.linkedin.com/search/results/all/?keywords=';
-});
-
-link7.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/facebook.png';
-  searchInput.placeholder = 'Buscar en Facebook';
-  searchInput.dataset.searchEngine = 'https://www.facebook.com/search/top/?q=';
-});
-
-link8.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/instagram.png';
-  searchInput.placeholder = 'Buscar en Instagram';
-  searchInput.dataset.searchEngine = 'https://www.instagram.com/';
-});
-
-link9.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/wikipedia.png';
-  searchInput.placeholder = 'Buscar en Wikipedia';
-  searchInput.dataset.searchEngine = 'https://es.wikipedia.org/w/index.php?go=Ir&search=';
-});
-
-link10.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/unsplash.png';
-  searchInput.placeholder = 'Buscar en Unsplash';
-  searchInput.dataset.searchEngine = 'https://unsplash.com/es/s/fotos/';
-});
-
-link11.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/bing.png';
-  searchInput.placeholder = 'Buscar en Bing';
-  searchInput.dataset.searchEngine = 'https://www.bing.com/search?q=';
-});
-
-link12.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/duckduckgo.png';
-  searchInput.placeholder = 'Buscar en DuckDuckgo';
-  searchInput.dataset.searchEngine = 'https://duckduckgo.com/?q=';
-});
-
-link13.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/x.png';
-  searchInput.placeholder = 'Buscar en X';
-  searchInput.dataset.searchEngine = 'https://X.com/search?q=';
-});
-
-link14.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/amazon.png';
-  searchInput.placeholder = 'Buscar en Amazon';
-  searchInput.dataset.searchEngine = 'https://www.amazon.es/s?k=';
-});
-
-link15.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/primevideo.png';
-  searchInput.placeholder = 'Buscar en Amazon Prime Vídeo';
-  searchInput.dataset.searchEngine = 'https://www.primevideo.com/region/eu/search/ref=atv_nb_sug?ie=UTF8&phrase=';
-});
-
-link16.addEventListener('click', () => {
-  searchIcon.src = './Img/logos/reddit.png';
-  searchInput.placeholder = 'Buscar en Reddit';
-  searchInput.dataset.searchEngine = 'https://www.reddit.com/search/?q=';
-});
-
-// Primera búsqueda
-
+// Función de búsqueda (usada por botón y Enter)
 function googleSearch() {
   const query = searchInput.value;
   const searchEngine = searchInput.dataset.searchEngine || 'https://www.google.com/search?q=';
   window.open(`${searchEngine}${query}`, '_blank');
+  addToSearchHistory(query);
 }
 
 // Botón borrar

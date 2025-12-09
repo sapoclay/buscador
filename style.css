@@ -280,12 +280,6 @@
 }
 
 
-/* Mueve el texto luminoso más a la derecha debajo de los iconos sociales */
-.txt-ne-right {
-  margin-left: 2.5rem;
-  display: inline-block;
-}
-
 #editable-text:focus {
   background: rgb(255 255 255 / 5%);
   outline: none;
@@ -444,16 +438,40 @@ button, a, input {
 #links-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  margin-top: 3.5rem;
   margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#links-container > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(0.65rem, 2vw, 0.85rem);
+  font-weight: 400;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.3rem;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .mycontainer {
   max-width: 900px;
   margin: 0 auto;
-  padding: 1.5rem 1rem 0 1rem;
+  padding: 5rem 1rem 0 1rem;
   width: 100%;
   min-height: 80vh;
   display: flex;
@@ -554,9 +572,12 @@ h3 {
     min-height: 60vh;
   }
   #links-container {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-start;
+    gap: 0.3rem;
+    margin-top: 3rem;
+    padding: 0.3rem;
+  }
+  #links-container > a {
+    padding: 0.3rem 0.5rem;
   }
   #apps-container {
     grid-template-columns: 1fr;
@@ -580,19 +601,14 @@ h3 {
   }
 }
 
-#links-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 0.75rem;
+#links-container > a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
-#links-container > a {
-  color: rgb(255 255 255 / 80%);
-  font-size: 0.75rem;
-  text-decoration: none;
-  border: 0.5px solid rgb(250, 0, 0);
-  font-weight: bold;
+#links-container > a:active {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 
@@ -662,13 +678,6 @@ h3 {
   background-color: transparent;
   padding: 1rem;  
   padding-left: 1rem;
-}
-
-#apps-container {
-  display: grid;
-  gap: 0.2rem;
-  grid-template-columns: repeat(2, 50%);  
-  margin: 3rem 0rem;
 }
 
 #apps-container > a {
@@ -884,22 +893,6 @@ h3 {
   height: 40%;
   width: 40%;
 }
-.social-button--instagram {
-  color: #3f729b; /* adjust the color to match your design */
-  background-color: white;
-  border: none;
-  padding: 0;
-  margin: 0 5px;
-  font-size: 24px; /* adjust the font size to match the other icons */
-}
-.social-button--youtube {
-  color: #ff0000; /* adjust the color to match your design */
-  background-color: white;
-  border: none;
-  padding: 0;
-  margin: 0 5px;
-  font-size: 24px; /* adjust the font size to match the other icons */
-}
 .social-button--mail {
   color: #0072c6;
 }
@@ -923,12 +916,6 @@ h3 {
 }
 .social-button--github::after {
   background: #6e5494;
-}
-.social-button--twitter {
-  color: #00c8fa;
-}
-.social-button--twitter::after {
-  background: #00c8fa;
 }
 .social-button--steam {
   color: #7da10e;
@@ -971,9 +958,9 @@ h3 {
   --electron-color-hex: #99f8ff;
   --electron-size : calc(var(--atom-size) / 25);
   --electron-orbit-size : calc(var(--atom-size) / 2.5);
-  --electron-speed : 1.2s;
-  --electron-speed-alpha : 1s;
-  --electron-speed-omega : .8s;
+  --electron-speed : 3s;
+  --electron-speed-alpha : 2.5s;
+  --electron-speed-omega : 2s;
 }
 
 
@@ -985,17 +972,17 @@ h3 {
   position: relative;
   width: var(--atom-size);
   height: var(--atom-size);
-  animation: 20s atom infinite cubic-bezier(.5, .25, 0, .75);
+  animation: 40s atom infinite ease-in-out;
 }
 @keyframes atom {
   0% {    transform: rotate(0deg) scale(1); }
-  12.5% { transform: rotate(-45deg) scale(.9); }
+  12.5% { transform: rotate(-45deg) scale(.97); }
   25% {   transform: rotate(-90deg) scale(1); }
-  37.5% { transform: rotate(-135deg) scale(.9); }
+  37.5% { transform: rotate(-135deg) scale(.97); }
   50% {   transform: rotate(-180deg) scale(1); }
-  62.5% { transform: rotate(-225deg) scale(.9); }
+  62.5% { transform: rotate(-225deg) scale(.97); }
   75% {   transform: rotate(-270deg) scale(1); }
-  87.5% { transform: rotate(-315deg) scale(.9); }
+  87.5% { transform: rotate(-315deg) scale(.97); }
   100% {  transform: rotate(-360deg) scale(1); }
 }
 
@@ -1021,15 +1008,15 @@ h3 {
   position: absolute;
   top: 50%;
   margin-top: calc(var(--electron-orbit-size) / -3);
-  animation: var(--electron-speed) electron-orbit infinite linear;
+  animation: var(--electron-speed) electron-orbit infinite ease-in-out;
 }
 .atom > .electron-alpha {
   transform: rotate(75deg);
-  animation: var(--electron-speed-alpha) electron-orbit infinite linear;
+  animation: var(--electron-speed-alpha) electron-orbit infinite ease-in-out;
 }
 .atom > .electron-omega {
   transform: rotate(-60deg);
-  animation: var(--electron-speed-omega) electron-orbit infinite linear;
+  animation: var(--electron-speed-omega) electron-orbit infinite ease-in-out;
 }
 @keyframes electron-orbit {
   0% {
@@ -1296,21 +1283,6 @@ button {
   100% {
       background: #00aad4;  
   }
-}
-
-h3{
-font-family: 'Pacifico', cursive;
-font-weight: 100;
-margin: 0px;
-position: absolute;
-  top: 15% !important;
-  left: 45%;
-  transform: translate(-50% ,-50%);
-  color: #fff;
-  font-size: 30px;
-  text-shadow: 0px 0px 20px #00aad4;
-  -webkit-animation: blinkH1 5s  infinite;
-  animation: blinkH1 5s  infinite;
 }
 
 h3:after{
